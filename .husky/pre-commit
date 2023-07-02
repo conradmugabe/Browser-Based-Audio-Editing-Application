@@ -4,4 +4,5 @@
 npm run tsc:check
 npm run format:check
 npm run lint:check
+npm run test
 npm run build

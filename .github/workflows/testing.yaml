@@ -1,0 +1,41 @@
+name: "Testing WorkFlow"
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 🔔
+        uses: actions/checkout@v3
+
+      - name: Setup Node ☊
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Install Dependencies ⚙️
+        run: npm ci
+
+      - name: Run type checking
+        run: npm run tsc:check
+
+      - name: Checking Code Formatting 🎩👔👞
+        run: npm run format:check
+
+      - name: Checking Code Linting 😇🕊️
+        run: npm run lint:check
+
+      - name: Runs Tests 🧪
+        run: npm run test
+
+      - name: Checking Project Build 🔨👷🏾‍♀️⛏️
+        run: npm run build
+
+      - name: Upload coverage reports to Codecov 📈
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
