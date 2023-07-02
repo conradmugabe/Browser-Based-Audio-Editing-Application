@@ -1,4 +1,4 @@
-name: "Testing WorkFlow"
+name: "Build"
 
 on:
   push:
