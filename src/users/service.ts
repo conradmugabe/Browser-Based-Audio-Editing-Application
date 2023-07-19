@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { User } from "./interface";
+import { User } from "./entity";
 import httpService from "../services/httpService";
 
 const apiClientService = axios.create({

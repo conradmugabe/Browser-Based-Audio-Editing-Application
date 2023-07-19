@@ -24,9 +24,10 @@
     /* Path resolution */
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@mocks/*": ["mocks/*"]
     }
   },
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "mocks"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

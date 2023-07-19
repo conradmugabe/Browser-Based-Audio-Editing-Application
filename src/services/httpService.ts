@@ -14,14 +14,14 @@ class HttpService<TData> {
     return data;
   };
 
-  //   create = async <T>(newData: T, config?: AxiosRequestConfig) => {
-  //     const { data } = await this.apiClientService.post<TData>(
-  //       this.endpoint,
-  //       newData,
-  //       config
-  //     );
-  //     return data;
-  //   };
+  create = async <T>(newData: T, config?: AxiosRequestConfig) => {
+    const { data } = await this.apiClientService.post<TData>(
+      this.endpoint,
+      newData,
+      config
+    );
+    return data;
+  };
 }
 
 export default <TData>(apiClientService: AxiosInstance, endpoint: string) =>
