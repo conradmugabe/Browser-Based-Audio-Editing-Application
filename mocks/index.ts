@@ -1,4 +1,4 @@
-async function initMock() {
+export async function initMock() {
   if (typeof window === "undefined") {
     const { server } = await import("./server");
     server.listen();
@@ -7,5 +7,3 @@ async function initMock() {
     worker.start();
   }
 }
-
-initMock();
