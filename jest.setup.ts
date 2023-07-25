@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom";
 
-import { server } from "./mocks/server";
+import { close, initMock, resetHandlers } from "./mocks";
 
-beforeAll(() => server.listen());
+beforeAll(async () => await initMock());
 
-afterEach(() => server.resetHandlers());
+afterEach(async () => await resetHandlers());
 
-afterAll(() => server.close());
+afterAll(async () => await close());
