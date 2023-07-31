@@ -11,6 +11,12 @@ export default defineConfig({
     alias: {
       "@src": path.resolve(__dirname, "/src"),
       "@mocks": path.resolve(__dirname, "/mocks"),
+      "@tests": path.resolve(__dirname, "/tests"),
+      "@logging": path.resolve(__dirname, "/src/logging"),
+      "@monitoring": path.resolve(__dirname, "/src/monitoring"),
+      "@bootstrap": path.resolve(__dirname, "/src/bootstrap"),
+      "@auth": path.resolve(__dirname, "/src/auth"),
+      "@users": path.resolve(__dirname, "/src/users"),
     },
   },
 });
