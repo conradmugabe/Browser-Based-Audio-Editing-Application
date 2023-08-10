@@ -5,7 +5,7 @@ import "@bootstrap/env";
 import { initMock } from "@mocks/index";
 
 if (import.meta.env.VITE_API_MOCKING) {
-  await initMock();
+  initMock();
 }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
