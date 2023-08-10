@@ -17,23 +17,26 @@ jobs:
         with:
           node-version: "16"
 
+      - name: Install pnpm 📦
+        run: npm install -g pnpm
+
       - name: Install Dependencies ⚙️
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Run type checking
-        run: npm run tsc:check
+        run: pnpm run tsc:check
 
       - name: Checking Code Formatting 🎩👔👞
-        run: npm run format:check
+        run: pnpm run format:check
 
       - name: Checking Code Linting 😇🕊️
-        run: npm run lint:check
+        run: pnpm run lint:check
 
       - name: Runs Tests 🧪
-        run: npm run test
+        run: pnpm run test
 
       - name: Checking Project Build 🔨👷🏾‍♀️⛏️
-        run: npm run build
+        run: pnpm run build
 
       - name: Upload coverage reports to Codecov 📈
         uses: codecov/codecov-action@v3

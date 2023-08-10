@@ -24,13 +24,9 @@
     /* Path resolution */
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"],
       "@mocks/*": ["mocks/*"],
-      "@tests/*": ["tests/*"],
-      "@logging/*": ["src/logging/*"],
       "@bootstrap/*": ["src/bootstrap/*"],
-      "@auth/*": ["src/auth/*"],
-      "@users/*": ["src/users/*"]
+      "@logging/*": ["src/logging/*"]
     }
   },
   "include": ["src", "tests", "mocks"],

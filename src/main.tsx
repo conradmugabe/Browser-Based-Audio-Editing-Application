@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "@bootstrap/env";
-import App from "@src/App";
-import AppProviders from "@src/providers";
 import { initMock } from "@mocks/index";
 
 if (import.meta.env.VITE_API_MOCKING) {
@@ -12,8 +10,6 @@ if (import.meta.env.VITE_API_MOCKING) {
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <AppProviders>
-      <App />
-    </AppProviders>
+    <></>
   </React.StrictMode>
 );
