@@ -70,6 +70,9 @@ devDependencies:
   vitest:
     specifier: ^0.34.1
     version: 0.34.1
+  vitest-mock-extended:
+    specifier: ^1.2.0
+    version: 1.2.0(typescript@5.0.2)(vitest@0.34.1)
 
 packages:
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -3407,6 +3410,17 @@ packages:
       }
     dev: true
 
+  /ts-essentials@9.3.2(typescript@5.0.2):
+    resolution:
+      {
+        integrity: sha512-JxKJzuWqH1MmH4ZFHtJzGEhkfN3QvVR3C3w+4BIoWeoY68UVVoA2Np/Bca9z0IPSErVCWhv439aT0We4Dks8kQ==,
+      }
+    peerDependencies:
+      typescript: ">=4.1.0"
+    dependencies:
+      typescript: 5.0.2
+    dev: true
+
   /tslib@1.14.1:
     resolution:
       {
@@ -3591,6 +3605,20 @@ packages:
       rollup: 3.28.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vitest-mock-extended@1.2.0(typescript@5.0.2)(vitest@0.34.1):
+    resolution:
+      {
+        integrity: sha512-/UwFogR1XFvLHmdru+IDbfEywwqKQ8QuaKPEyoWg1ElbZFck/y/jikeOu/EjAVEoYxS9pB/FKFHAidkNBtwEFA==,
+      }
+    peerDependencies:
+      typescript: 3.x || 4.x || 5.x
+      vitest: ">=0.31.1"
+    dependencies:
+      ts-essentials: 9.3.2(typescript@5.0.2)
+      typescript: 5.0.2
+      vitest: 0.34.1
     dev: true
 
   /vitest@0.34.1:
