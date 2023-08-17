@@ -6,6 +6,7 @@ import {
   SignUpResponse,
   SignUpWithEmailAndPasswordRequest,
   SignUpWithProviderRequest,
+  UpdatePassword,
 } from "@auth/entities/auth-entities";
 import { Logging } from "@auth/ext-deps";
 
@@ -86,6 +87,16 @@ export class AuthService {
     await this.config.authServiceProvider.resetPasswordViaEmail(data);
     await this.config.logger?.info(
       `user with email ${data.email} has requested to reset password`
+    );
+  };
+
+  updatePassword = async (data: UpdatePassword): Promise<void> => {
+    await this.config.logger?.info(
+      `user with email ${data.email} is requesting to update password`
+    );
+    await this.config.authServiceProvider.updatePassword(data);
+    await this.config.logger?.info(
+      `user with email ${data.email} has requested to update password`
     );
   };
 }

@@ -266,4 +266,38 @@ describe("AuthService", () => {
       );
     });
   });
+
+  describe("updatePassword", () => {
+    test("should call the logger if the logger is provided during update password", async () => {
+      const authService = new AuthService({
+        authServiceProvider,
+        logger: logging,
+      });
+      const data = { email: "", newPassword: "", oldPassword: "" };
+      authServiceProvider.updatePassword.mockImplementation(
+        returnPromiseVoidMock
+      );
+
+      await authService.updatePassword(data);
+
+      expect(logging.info).toHaveBeenCalled();
+      expect(logging.info).toBeCalledTimes(2);
+      expect(authServiceProvider.updatePassword).toHaveBeenCalled();
+      expect(authServiceProvider.updatePassword).toBeCalledWith(data);
+    });
+
+    test("authServiceProvider returns void after update password", async () => {
+      const authService = new AuthService({ authServiceProvider });
+      const data = { email: "", newPassword: "", oldPassword: "" };
+      authServiceProvider.updatePassword.mockImplementation(
+        returnPromiseVoidMock
+      );
+
+      await authService.updatePassword(data);
+
+      expect(logging.info).not.toHaveBeenCalled();
+      expect(authServiceProvider.updatePassword).toHaveReturned();
+      expect(authServiceProvider.updatePassword).toHaveReturnedWith(undefined);
+    });
+  });
 });

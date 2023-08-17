@@ -32,6 +32,12 @@ export type ResetPasswordViaEmail = {
   email: string;
 };
 
+export type UpdatePassword = {
+  email: string;
+  newPassword: string;
+  oldPassword: string;
+};
+
 export interface AuthServiceProvider {
   signUpWithEmailAndPassword(
     data: SignUpWithEmailAndPasswordRequest
@@ -46,4 +52,6 @@ export interface AuthServiceProvider {
   loginWithProvider(data: LoginWithProviderRequest): Promise<LoginResponse>;
 
   resetPasswordViaEmail(data: ResetPasswordViaEmail): Promise<void>;
+
+  updatePassword(data: UpdatePassword): Promise<void>;
 }
