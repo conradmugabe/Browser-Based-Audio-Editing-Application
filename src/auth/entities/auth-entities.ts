@@ -38,6 +38,10 @@ export type UpdatePassword = {
   oldPassword: string;
 };
 
+export type LogoutRequest = {
+  email: string;
+};
+
 export interface AuthServiceProvider {
   signUpWithEmailAndPassword(
     data: SignUpWithEmailAndPasswordRequest
@@ -54,4 +58,6 @@ export interface AuthServiceProvider {
   resetPasswordViaEmail(data: ResetPasswordViaEmail): Promise<void>;
 
   updatePassword(data: UpdatePassword): Promise<void>;
+
+  logout(): Promise<void>;
 }

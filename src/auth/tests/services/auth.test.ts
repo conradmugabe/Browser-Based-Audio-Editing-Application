@@ -300,4 +300,33 @@ describe("AuthService", () => {
       expect(authServiceProvider.updatePassword).toHaveReturnedWith(undefined);
     });
   });
+
+  describe("logout", () => {
+    test("should call the logger if the logger is provided during logout", async () => {
+      const authService = new AuthService({
+        authServiceProvider,
+        logger: logging,
+      });
+      const data = { email: "" };
+      authServiceProvider.logout.mockImplementation(returnPromiseVoidMock);
+
+      await authService.logout(data);
+
+      expect(logging.info).toHaveBeenCalled();
+      expect(logging.info).toBeCalledTimes(2);
+      expect(authServiceProvider.logout).toHaveBeenCalled();
+    });
+
+    test("authServiceProvider returns void after logout", async () => {
+      const authService = new AuthService({ authServiceProvider });
+      const data = { email: "" };
+      authServiceProvider.logout.mockImplementation(returnPromiseVoidMock);
+
+      await authService.logout(data);
+
+      expect(logging.info).not.toHaveBeenCalled();
+      expect(authServiceProvider.logout).toHaveReturned();
+      expect(authServiceProvider.logout).toHaveReturnedWith(undefined);
+    });
+  });
 });

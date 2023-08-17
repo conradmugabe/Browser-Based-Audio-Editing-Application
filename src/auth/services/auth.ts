@@ -2,6 +2,7 @@ import {
   AuthServiceProvider,
   LoginResponse,
   LoginWithEmailAndPasswordRequest,
+  LogoutRequest,
   ResetPasswordViaEmail,
   SignUpResponse,
   SignUpWithEmailAndPasswordRequest,
@@ -97,6 +98,16 @@ export class AuthService {
     await this.config.authServiceProvider.updatePassword(data);
     await this.config.logger?.info(
       `user with email ${data.email} has requested to update password`
+    );
+  };
+
+  logout = async (data: LogoutRequest): Promise<void> => {
+    await this.config.logger?.info(
+      `user with email ${data.email} is logging out`
+    );
+    await this.config.authServiceProvider.logout();
+    await this.config.logger?.info(
+      `user with email ${data.email} has logged out`
     );
   };
 }
