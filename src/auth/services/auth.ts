@@ -2,6 +2,7 @@ import {
   AuthServiceProvider,
   LoginResponse,
   LoginWithEmailAndPasswordRequest,
+  ResetPasswordViaEmail,
   SignUpResponse,
   SignUpWithEmailAndPasswordRequest,
   SignUpWithProviderRequest,
@@ -74,5 +75,17 @@ export class AuthService {
       } has logged in with ${data.provider.toUpperCase()} provider`
     );
     return { user, token };
+  };
+
+  resetPasswordViaEmail = async (
+    data: ResetPasswordViaEmail
+  ): Promise<void> => {
+    await this.config.logger?.info(
+      `user with email ${data.email} is requesting to reset password`
+    );
+    await this.config.authServiceProvider.resetPasswordViaEmail(data);
+    await this.config.logger?.info(
+      `user with email ${data.email} has requested to reset password`
+    );
   };
 }

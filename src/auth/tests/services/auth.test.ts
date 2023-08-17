@@ -14,6 +14,12 @@ const getTokenAndUserMock = (): Promise<SignUpResponse> => {
   });
 };
 
+const returnPromiseVoidMock = (): Promise<void> => {
+  return new Promise((resolve) => {
+    resolve();
+  });
+};
+
 describe("AuthService", () => {
   let authServiceProvider: MockProxy<AuthServiceProvider>;
   let logging: MockProxy<Logging>;
@@ -222,6 +228,42 @@ describe("AuthService", () => {
         user,
         token,
       });
+    });
+  });
+
+  describe("resetPasswordViaEmail", () => {
+    test("should call the logger if the logger is provided during reset password", async () => {
+      const authService = new AuthService({
+        authServiceProvider,
+        logger: logging,
+      });
+      const data = { email: "" };
+      authServiceProvider.resetPasswordViaEmail.mockImplementation(
+        returnPromiseVoidMock
+      );
+
+      await authService.resetPasswordViaEmail(data);
+
+      expect(logging.info).toHaveBeenCalled();
+      expect(logging.info).toBeCalledTimes(2);
+      expect(authServiceProvider.resetPasswordViaEmail).toHaveBeenCalled();
+      expect(authServiceProvider.resetPasswordViaEmail).toBeCalledWith(data);
+    });
+
+    test("authServiceProvider returns void after reset password", async () => {
+      const authService = new AuthService({ authServiceProvider });
+      const data = { email: "" };
+      authServiceProvider.resetPasswordViaEmail.mockImplementation(
+        returnPromiseVoidMock
+      );
+
+      await authService.resetPasswordViaEmail(data);
+
+      expect(logging.info).not.toHaveBeenCalled();
+      expect(authServiceProvider.resetPasswordViaEmail).toHaveReturned();
+      expect(authServiceProvider.resetPasswordViaEmail).toHaveReturnedWith(
+        undefined
+      );
     });
   });
 });
