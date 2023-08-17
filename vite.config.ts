@@ -12,6 +12,7 @@ export default defineConfig({
       "@mocks": path.resolve(__dirname, "/mocks"),
       "@bootstrap": path.resolve(__dirname, "/src/bootstrap"),
       "@logging": path.resolve(__dirname, "/src/logging"),
+      "@auth": path.resolve(__dirname, "/src/auth"),
     },
   },
 });
