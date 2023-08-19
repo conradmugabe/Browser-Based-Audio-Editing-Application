@@ -25,9 +25,11 @@
     "baseUrl": ".",
     "paths": {
       "@mocks/*": ["mocks/*"],
+      "@utils/*": ["utils/*"],
       "@bootstrap/*": ["src/bootstrap/*"],
       "@logging/*": ["src/logging/*"],
-      "@auth/*": ["src/auth/*"]
+      "@auth/*": ["src/auth/*"],
+      "@utils-http/*": ["src/utils/http/*"]
     }
   },
   "include": ["src", "tests", "mocks"],

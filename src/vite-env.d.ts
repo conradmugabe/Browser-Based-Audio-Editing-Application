@@ -1,9 +1,11 @@
 /// <reference types="vite/client" />
 
-import { z } from "zod";
-
-import { environmentVariables } from "@bootstrap/env";
+interface ImportMetaEnv {
+  readonly VITE_API_MOCKING?: string;
+  readonly VITE_HTTP_TEST_SERVICE_URL: string;
+  readonly VITE_TEST_ENDPOINT: string;
+}
 
 interface ImportMeta {
-  readonly env: z.infer<typeof environmentVariables>;
+  readonly env: ImportMetaEnv;
 }

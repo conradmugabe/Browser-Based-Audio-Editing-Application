@@ -1,5 +1,3 @@
-import { afterAll, afterEach, beforeAll } from "vitest";
-
 export async function initMock() {
   if (typeof window === "undefined") {
     const { server } = await import("./server");
@@ -29,15 +27,3 @@ export async function close() {
     worker.stop();
   }
 }
-
-beforeAll(async () => {
-  await initMock();
-});
-
-afterAll(async () => {
-  await close();
-});
-
-afterEach(async () => {
-  await resetHandlers();
-});
