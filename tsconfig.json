@@ -24,9 +24,14 @@
     /* Path resolution */
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"]
+      "@mocks/*": ["mocks/*"],
+      "@utils/*": ["utils/*"],
+      "@bootstrap/*": ["src/bootstrap/*"],
+      "@logging/*": ["src/logging/*"],
+      "@auth/*": ["src/auth/*"],
+      "@utils-http/*": ["src/utils/http/*"]
     }
   },
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "mocks"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
