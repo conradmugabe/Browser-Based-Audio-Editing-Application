@@ -9,7 +9,14 @@ import {
 import { ApiClientServiceProvider } from "@auth/ext-deps";
 
 interface HttpAuthServiceProviderConfig {
-  apiClientService: ApiClientServiceProvider;
+  apiClientServiceProvider: ApiClientServiceProvider;
+  loginWithEmailAndPasswordEndpoint: string;
+  loginWithProviderEndpoint: string;
+  logoutEndpoint: string;
+  resetPasswordViaEmailEndpoint: string;
+  signUpWithEmailAndPasswordEndpoint: string;
+  signUpWithProviderEndpoint: string;
+  updatePasswordEndpoint: string;
 }
 
 export class HttpAuthServiceProvider implements AuthServiceProvider {
@@ -18,39 +25,39 @@ export class HttpAuthServiceProvider implements AuthServiceProvider {
   loginWithEmailAndPassword(
     data: SignUpWithEmailAndPasswordRequest
   ): Promise<SignUpResponse> {
-    const endpoint = "/auth/login";
-    return this.config.apiClientService.post(endpoint, data);
+    const endpoint = this.config.loginWithEmailAndPasswordEndpoint;
+    return this.config.apiClientServiceProvider.post(endpoint, data);
   }
 
   loginWithProvider(data: SignUpWithProviderRequest): Promise<SignUpResponse> {
-    const endpoint = "/auth/login/provider";
-    return this.config.apiClientService.post(endpoint, data);
+    const endpoint = this.config.loginWithProviderEndpoint;
+    return this.config.apiClientServiceProvider.post(endpoint, data);
   }
 
   logout(): Promise<void> {
-    const endpoint = "/auth/logout";
-    return this.config.apiClientService.post(endpoint);
+    const endpoint = this.config.logoutEndpoint;
+    return this.config.apiClientServiceProvider.post(endpoint);
   }
 
   resetPasswordViaEmail(data: ResetPasswordViaEmail): Promise<void> {
-    const endpoint = "/auth/reset-password";
-    return this.config.apiClientService.post(endpoint, data);
+    const endpoint = this.config.resetPasswordViaEmailEndpoint;
+    return this.config.apiClientServiceProvider.post(endpoint, data);
   }
 
   signUpWithEmailAndPassword(
     data: SignUpWithEmailAndPasswordRequest
   ): Promise<SignUpResponse> {
-    const endpoint = "/auth/signup";
-    return this.config.apiClientService.post(endpoint, data);
+    const endpoint = this.config.signUpWithEmailAndPasswordEndpoint;
+    return this.config.apiClientServiceProvider.post(endpoint, data);
   }
 
   signUpWithProvider(data: SignUpWithProviderRequest): Promise<SignUpResponse> {
-    const endpoint = "/auth/signup/provider";
-    return this.config.apiClientService.post(endpoint, data);
+    const endpoint = this.config.signUpWithProviderEndpoint;
+    return this.config.apiClientServiceProvider.post(endpoint, data);
   }
 
   updatePassword(data: UpdatePassword): Promise<void> {
-    const endpoint = "/auth/update-password";
-    return this.config.apiClientService.post(endpoint, data);
+    const endpoint = this.config.updatePasswordEndpoint;
+    return this.config.apiClientServiceProvider.post(endpoint, data);
   }
 }
