@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       "@mocks": path.resolve(__dirname, "/mocks"),
       "@utils": path.resolve(__dirname, "/utils"),
+      "@ui": path.resolve(__dirname, "/src/ui"),
       "@bootstrap": path.resolve(__dirname, "/src/bootstrap"),
       "@logging": path.resolve(__dirname, "/src/logging"),
       "@auth": path.resolve(__dirname, "/src/auth"),

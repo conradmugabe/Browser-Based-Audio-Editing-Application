@@ -26,6 +26,7 @@
     "paths": {
       "@mocks/*": ["mocks/*"],
       "@utils/*": ["utils/*"],
+      "@ui/*": ["src/ui/*"],
       "@bootstrap/*": ["src/bootstrap/*"],
       "@logging/*": ["src/logging/*"],
       "@auth/*": ["src/auth/*"],
