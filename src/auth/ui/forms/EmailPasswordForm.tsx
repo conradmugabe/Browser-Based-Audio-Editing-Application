@@ -2,27 +2,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { Form } from "@ui/components/ui/form";
-import { Input } from "@ui/components/common/Input";
-import { toast } from "@ui/components/ui/use-toast";
-import { Button } from "@ui/components/ui/button";
+import { Form } from "@ui/components/common/form";
+import { Input } from "@ui/components/compound/Input";
+import { toast } from "@ui/components/common/use-toast";
+import { Button } from "@ui/components/common/button";
 
-const FormSchema = z
-  .object({
-    email: z.string().email({
-      message: "Email must be valid.",
-    }),
-    password: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
-    }),
-    confirmPassword: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
-    }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords must match.",
-    path: ["confirmPassword"],
-  });
+const FormSchema = z.object({
+  email: z.string().email({
+    message: "Email must be valid.",
+  }),
+  password: z.string().min(8, {
+    message: "Password must be at least 8 characters.",
+  }),
+});
 
 export function EmailPasswordForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -45,11 +37,6 @@ export function EmailPasswordForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-3">
         <Input placeholder="Email" control={form.control} name="email" />
         <Input placeholder="Password" control={form.control} name="password" />
-        <Input
-          placeholder="Confirm Password"
-          control={form.control}
-          name="confirmPassword"
-        />
         <Button className="w-full" type="submit">
           Continue
         </Button>
